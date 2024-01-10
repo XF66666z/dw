@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html代码测试</title>
+    <script>
+        function getDeviceInfo() {
+            let deviceInfo = "Device Information: ";
+            deviceInfo += "Browser: " + navigator.userAgent + ", ";
+            deviceInfo += "Screen Resolution: " + window.screen.width + "x" + window.screen.height;
+            document.getElementById("deviceInfo").innerHTML = deviceInfo;
+        }
+
+        function getNetworkInfo() {
+            let networkInfo = "Network Information: ";
+            networkInfo += "Online: " + navigator.onLine + ", ";
+            networkInfo += "Connection Type: " + navigator.connection.type;
+            document.getElementById("networkInfo").innerHTML = networkInfo;
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                document.getElementById("locationInfo").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            let locationInfo = "Location Information: ";
+            locationInfo += "Latitude: " + position.coords.latitude + ", ";
+            locationInfo += "Longitude: " + position.coords.longitude;
+            document.getElementById("locationInfo").innerHTML = locationInfo;
+        }
+    </script>
+</head>
+<body>
+    <h1>html代码测试</h1>
+    <button onclick="getDeviceInfo()">获取设备信息</button>
+    <p id="deviceInfo"></p>
+
+    <button onclick="getNetworkInfo()">获取网络信息</button>
+    <p id="networkInfo"></p>
+
+    <button onclick="getLocation()">获取位置信息</button>
+    <p id="locationInfo"></p>
+</body>
+</html>
